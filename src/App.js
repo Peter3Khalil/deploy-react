@@ -1,25 +1,32 @@
-import logo from './logo.svg';
-import './App.css';
+import "./App.css";
+import React, { Children, Component } from "react";
+import { Route, Routes, useParams } from "react-router-dom";
+import Navbar from "./component/navbar/navbar";
+import About from "./component/about";
+import Contact from "./component/contact";
+import Home from "./component/home";
+import Login from "./component/login/login";
+import "../node_modules/bootstrap/dist/css/bootstrap.min.css";
+class App extends Component {
+  render() {
+   
+    return (
+      <div>
+        <Navbar />
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+        <Routes>
+          <Route path="login">
+            <Route path=":id" element={<Login/>}/>
+          </Route>
+          <Route path="/" element={<Home />} />
+          <Route path="/contact" element={<Contact />} />
+          <Route path="/about" element={<About />} />
+        </Routes>
+
+        {/* <Login/> */}
+      </div>
+    );
+  }
 }
 
 export default App;
